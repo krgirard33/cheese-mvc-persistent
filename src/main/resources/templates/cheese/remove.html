@@ -7,6 +7,8 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
+<p th:unless="${cheeses} and ${cheeses.size()}">no cheese available :(</p>
+
 <form method="post">
 
     <div th:each="cheese : ${cheeses}" class="checkbox">
