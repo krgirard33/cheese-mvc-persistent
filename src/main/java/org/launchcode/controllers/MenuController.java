@@ -26,7 +26,7 @@ public class MenuController {
 
     @RequestMapping(value = "")
     public String index(Model model) {
-        model.addAttribute("title", "Manus");
+        model.addAttribute("title", "Menus");
         model.addAttribute("menus", menuDao.findAll());
         return "menu/index";
     }
@@ -78,7 +78,7 @@ public class MenuController {
     }
 
     @RequestMapping(value = "add-item", method = RequestMethod.POST)
-    public String addItem(Model model, @ModelAttribute @Valid AddMenuItemForm form,
+    public String addItem(int menuId, Model model, @ModelAttribute @Valid AddMenuItemForm form,
                           Errors errors) {
 
         if (errors.hasErrors()) {

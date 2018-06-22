@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -79,5 +76,46 @@ public class CheeseController {
 
         return "redirect:";
     }
+    /**
+    @RequestMapping(value="category/{categoryId}", method = RequestMethod.GET)
+    public String displayByCategory(@PathVariable("categoryId") int categoryId, Model model) {
+
+        model.addAttribute("title", "Cheese in Category");
+        model.addAttribute("cheeses", cheeseDao.findByCategory_Id(categoryId));
+
+        return "cheese/index";
+    }
+
+    @RequestMapping(value = "edit/{cheeseId}", method = RequestMethod.GET)
+    public String displayEditCheeseForm(Model model, @PathVariable int cheeseId) {
+        model.addAttribute("title", "Edit Cheese");
+        Cheese moo = cheeseDao.findOne(cheeseId);
+        model.addAttribute("cheese", moo);
+        model.addAttribute("categories", categoryDao.findAll());
+        return "cheese/edit";
+    }
+
+    @RequestMapping(value = "edit", method = RequestMethod.POST)
+    public String processEditCheeseForm(@ModelAttribute  @Valid Cheese moo,
+                                       Errors errors, @RequestParam int categoryId,
+                                       Model model) {
+
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Edit Cheese");
+            model.addAttribute("cheese", moo);
+            model.addAttribute("categories", categoryDao.findAll());
+            return "cheese/edit";
+        }
+
+        Category cat = categoryDao.findOne(categoryId);
+
+        cheeseDao.delete(cheeseId);
+        moo.setName(moo.getName());
+        moo.setDescription(moo.setDescription());
+        moo.setCategory(cat);
+        cheeseDao.save(moo);
+        return "redirect:";
+    }
+    **/
 
 }
