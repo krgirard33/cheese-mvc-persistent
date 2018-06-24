@@ -35,4 +35,16 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Cheese> getCheeses() {
+        return cheeses;
+    }
+
+    public void setCheeses(List<Cheese> cheeses) {
+        this.cheeses = cheeses;
+    }
 }
