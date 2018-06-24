@@ -24,7 +24,8 @@
         <select name="categoryId">
             <option th:each="category : ${categories}"
                     th:text="${category.name}"
-                    th:value="${category.id}"></option>
+                    th:value="${category.id}"
+                    th:selected="${category.id == cheese.category.id}"></option>
         </select>
     </div>
 
