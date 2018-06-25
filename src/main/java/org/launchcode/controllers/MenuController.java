@@ -93,15 +93,15 @@ public class MenuController {
 
         return "redirect:/menu/view/" + theMenu.getId();
     }
-    /**
-    @RequestMapping(value = "remove", method = RequestMethod.GET)
+
+    @RequestMapping(value = "removemenu", method = RequestMethod.GET)
     public String displayRemoveMenuForm(Model model) {
-        model.addAttribute("cheeses", menuDao.findAll());
+        model.addAttribute("menus", menuDao.findAll());
         model.addAttribute("title", "Remove Menu");
-        return "menu/remove";
+        return "menu/removemenu";
     }
 
-    @RequestMapping(value = "remove", method = RequestMethod.POST)
+    @RequestMapping(value = "removemenu", method = RequestMethod.POST)
     public String processRemoveMenuForm(@RequestParam int[] menuIds) {
 
         for (int menuId : menuIds) {
@@ -110,6 +110,4 @@ public class MenuController {
 
         return "redirect:";
     }
-    **/
-
 }
